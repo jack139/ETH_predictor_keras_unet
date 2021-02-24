@@ -4,6 +4,12 @@
 
 
 
+### 2021-02-24 更新：
+
+增加ViT-Unet模型，参考TransUnet（https://arxiv.org/abs/2102.04306），即在Unet底部增加一个Transformer的Encoder。网络性能会比单纯Unet好一些。
+
+
+
 ### 已实现的功能：
 
 1. 从okex获取ETH以太币的实时价格数据；
@@ -12,7 +18,7 @@
 4. 实时预测时，每次预测只取最近的一个点（如上所述，这个点可信度最高），然后把这个点作为历史数据，可以继续进行预测，想预测多长时间的，就重复多少次；
 5. 模型使用Keras构建，后端是tensorflow 1.15.4
 
-<img src="data/results/adjust_0.png" alt="adjust_0" style="zoom: 200%;" />
+<img src="data/results/vit_1h.png" alt="vit_1h" style="zoom: 200%;" />
 
 
 
@@ -26,7 +32,7 @@ dataset里有一个历史数据csv，可以用来生成训练数据，如果要�
 
 
 
-### 训练
+### 训练Unet
 
 ```
 cd unet
@@ -36,10 +42,20 @@ python3 main.py
 
 
 
+### 训练ViT-Unet
+
+```
+python3 -m vit_unet.train
+```
+
+
+
 ### 预测
 
 ```
 python3 predict_now.py
+
+python3 predict_vitunet.py
 ```
 默认预测24小时的趋势。predict_now.py会生成一个html，可以放到自己的web server上，方便手机查看。
 
@@ -54,7 +70,9 @@ python3 predict_now.py
 
 ### Pre-trained Model
 
-链接: https://pan.baidu.com/s/146DeSixN_RDZe84ggS_ByA 提取码: 726u
+Unet 链接: https://pan.baidu.com/s/146DeSixN_RDZe84ggS_ByA 提取码: 726u
+
+ViT-Unet 链接: https://pan.baidu.com/s/1uBDnlJAKWV3Lpyjx7ZYWLw 提取码: 8hfx 
 
 
 
@@ -68,3 +86,5 @@ python3 predict_now.py
 ### 模型参考
 
 https://github.com/zhixuhao/unet
+
+https://github.com/Lsdefine/attention-is-all-you-need-keras
