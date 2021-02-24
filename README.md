@@ -6,7 +6,7 @@
 
 ### 2021-02-24 更新：
 
-增加ViT-Unet模型，参考TransUnet（https://arxiv.org/abs/2102.04306），即在Unet底部增加一个Transformer的Encoder。网络性能会比单纯Unet好一些。
+增加ViT-Unet模型，参考[https://arxiv.org/abs/2102.04306](https://arxiv.org/abs/2102.04306)，即在Unet底部增加一个Transformer的Encoder。网络性能会比单纯Unet好一些。
 
 
 
